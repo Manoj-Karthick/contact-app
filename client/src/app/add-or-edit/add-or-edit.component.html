@@ -1,0 +1,190 @@
+<div class="font-weight-bold text-center py-2" *ngIf="isAddContact">
+  Add New Contact
+</div>
+<div class="font-weight-bold text-center py-2" *ngIf="!isAddContact">
+  Update Contact
+</div>
+<form
+  class="my-2 mx-5"
+  [formGroup]="contactForm"
+  (ngSubmit)="contactForm.valid && saveContact()"
+  autocomplete="off"
+>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >First Name</span
+      >
+    </div>
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('firstName')?.errors &&
+        contactForm.get('firstName')?.touched
+      "
+      type="text"
+      placeholder="First Name"
+      formControlName="firstName"
+    />
+    <div class="invalid-feedback">Please enter First Name</div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >Last Name</span
+      >
+    </div>
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('lastName')?.errors &&
+        contactForm.get('lastName')?.touched
+      "
+      type="text"
+      placeholder="Last Name"
+      formControlName="lastName"
+    />
+    <div class="invalid-feedback">Please enter last Name</div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+    </div>
+
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('email')?.errors && contactForm.get('email')?.touched
+      "
+      type="text"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <div class="invalid-feedback">Please enter valid email address</div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >Phone Number</span
+      >
+    </div>
+
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('phoneNumber')?.errors &&
+        contactForm.get('phoneNumber')?.touched
+      "
+      type="text"
+      placeholder="Phone Number"
+      formControlName="phoneNumber"
+    />
+    <div class="invalid-feedback">Please enter phone number (max:10)</div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >Address</span
+      >
+    </div>
+
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('address')?.errors &&
+        contactForm.get('address')?.touched
+      "
+      type="text"
+      placeholder="Address"
+      formControlName="address"
+    />
+    <div class="invalid-feedback">Please enter address</div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">City</span>
+    </div>
+
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('city')?.errors && contactForm.get('city')?.touched
+      "
+      type="text"
+      placeholder="City"
+      formControlName="city"
+    />
+    <div class="invalid-feedback">Please enter City</div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">State</span>
+    </div>
+
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('state')?.errors && contactForm.get('state')?.touched
+      "
+      type="text"
+      placeholder="State"
+      formControlName="state"
+    />
+    <div class="invalid-feedback">Please enter State</div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >Country</span
+      >
+    </div>
+
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('country')?.errors &&
+        contactForm.get('country')?.touched
+      "
+      type="text"
+      placeholder="Country"
+      formControlName="country"
+    />
+    <div class="invalid-feedback">Please enter Country</div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >Postal Code</span
+      >
+    </div>
+
+    <input
+      class="form-control"
+      [class.is-invalid]="
+        contactForm.get('postalCode')?.errors &&
+        contactForm.get('postalCode')?.touched
+      "
+      type="text"
+      placeholder="Postal Code"
+      formControlName="postalCode"
+    />
+    <div class="invalid-feedback">Please enter Postal Code (max:6)</div>
+  </div>
+
+  <button
+    class="btn btn-success mr-2"
+    type="submit"
+    [disabled]="!contactForm.valid"
+  >
+    {{ isAddContact == true ? "Add Contact" : "Update Contact" }}
+  </button>
+  <button class="btn btn-dark" routerLink="/">Cancel</button>
+</form>
